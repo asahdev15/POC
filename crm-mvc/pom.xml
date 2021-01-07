@@ -5,11 +5,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>asahdev</groupId>
-  <artifactId>spring-mvc-crm</artifactId>
+  <artifactId>crm-mvc</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <packaging>war</packaging>
 
-  <name>spring-mvc-crm</name>
+  <name>crm-mvc</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
@@ -91,7 +91,7 @@
   </dependencies>
 
   <build>
-    <finalName>spring-mvc-crm</finalName>
+    <finalName>crm-mvc</finalName>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <plugin>
