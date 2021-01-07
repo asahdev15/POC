@@ -1,0 +1,8 @@
+FROM openjdk:8-jdk-alpine
+ENV CACHE_HOST=127.0.0.1
+ENV CACHE_PORT=8083
+ENV DB_HOST=127.0.0.1
+ENV DB_PORT=8082
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]

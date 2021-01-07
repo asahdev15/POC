@@ -1,0 +1,12 @@
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api/v1
+
+spring.jackson.serialization.INDENT_OUTPUT: true
+spring.jackson.default-property-inclusion: NON_NULL
+
+db:
+  user.url: http://${DB_HOST}:${DB_PORT}/api/v1/user
+  register.url: http://${DB_HOST}:${DB_PORT}/api/v1/register

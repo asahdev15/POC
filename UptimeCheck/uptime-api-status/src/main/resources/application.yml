@@ -1,0 +1,13 @@
+
+server:
+  port: 8081
+  servlet:
+    context-path: /api/v1
+
+spring.jackson.serialization.INDENT_OUTPUT: true
+spring.jackson.default-property-inclusion: NON_NULL
+
+cache:
+  status.url: http://${CACHE_HOST}:${CACHE_PORT}/api/v1/status
+db:
+  status.url: http://${DB_HOST}:${DB_PORT}/api/v1/status

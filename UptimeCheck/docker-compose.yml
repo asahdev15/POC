@@ -1,0 +1,75 @@
+version: '3'
+services:
+  db:
+    build: ./uptime-db
+    container_name: db
+    ports:
+      - "8082:8082"
+    environment:
+      CACHE_HOST: "cache"
+      CACHE_PORT: 8083
+    networks:
+      - back-end
+
+  cache:
+    build: ./uptime-cache
+    container_name: cache
+    ports:
+      - "8083:8083"
+    environment:
+      DB_HOST: "db"
+      DB_PORT: 8082
+    networks:
+      - back-end
+    depends_on:
+      - "db"
+
+  monitoring:
+    build: ./uptime-jobs
+    container_name: monitoring
+    ports:
+      - "8084:8084"
+    environment:
+      DB_HOST: "db"
+      DB_PORT: 8082
+      CACHE_HOST: "cache"
+      CACHE_PORT: 8083
+    networks:
+      - back-end
+    depends_on:
+      - "cache"
+
+  register:
+    build: ./uptime-api-register
+    container_name: register
+    ports:
+      - "8080:8080"
+    environment:
+      DB_HOST: "db"
+      DB_PORT: 8082
+    networks:
+      - front-end
+      - back-end
+    depends_on:
+      - "db"
+
+  status:
+    build: ./uptime-api-status
+    container_name: status
+    ports:
+      - "8081:8081"
+    environment:
+      DB_HOST: "db"
+      DB_PORT: 8082
+      CACHE_HOST: "cache"
+      CACHE_PORT: 8083
+    networks:
+      - front-end
+      - back-end
+    depends_on:
+      - "cache"
+      - "db"
+
+networks:
+  front-end:
+  back-end:
